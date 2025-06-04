@@ -1,4 +1,4 @@
-import { InputStyle, Size} from "../../../../../types/input-types";
+import { InputStyle, Size } from '../../../../../types/input-types';
 
 export const getInputSizeStyle = (size: Size) => {
   let result: { borderRadius: string; scale: number };

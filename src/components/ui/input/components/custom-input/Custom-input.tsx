@@ -1,7 +1,7 @@
-import { InputProps} from "../../../../../types/input-types";
+import { InputProps } from '../../../../../types/input-types';
 import styles from './Custom-input.module.css';
 import { getInputSizeStyle, getInputStyle } from './utils';
-import { useError} from "../../../../../hooks/useError";
+import { useError } from '../../../../../hooks/useError';
 import { Icon } from '../icon/Icon';
 
 export const CustomInput = (props: Partial<InputProps>) => {
@@ -31,21 +31,20 @@ export const CustomInput = (props: Partial<InputProps>) => {
   const inputBorderRadius = inputBorderRadiusSize && getInputSizeStyle(inputBorderRadiusSize).borderRadius;
   const inputViewStyle = inputStyle && getInputStyle(inputStyle);
 
-
   return (
-    <div className={styles.input__container}
-         style={{ transform: `scale(${inputScale})` }}>
+    <div className={styles.input__container} style={{ transform: `scale(${inputScale})` }}>
       <div className={styles.label__wrapper}>
-        <label htmlFor={id}
-               className={type !== 'radio' ? styles.input__description : styles.no__element}>{labelValue}</label>
+        <label htmlFor={id} className={type !== 'radio' ? styles.input__description : styles.no__element}>
+          {labelValue}
+        </label>
         <span className={hasAsterisk ? styles.asterisk : styles.no__element}>*</span>
       </div>
       <span className={type === 'radio' ? styles.input__description : styles.no__element}>{value}</span>
       <p className={type !== 'radio' ? styles.input__description : styles.no__element}>{inputDescription}</p>
-      <div style={{position: 'relative', display: 'flex', alignItems: 'center'}}>
-        <div style={{position: 'absolute', left: '2px'}}>{icon && <Icon/>}</div>
+      <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+        <div style={{ position: 'absolute', left: '2px' }}>{icon && <Icon />}</div>
         <input
-          className={(isError && isEmpty) ? styles.input__error : styles[`${inputViewStyle}`]}
+          className={isError && isEmpty ? styles.input__error : styles[`${inputViewStyle}`]}
           style={{ borderRadius: `${inputBorderRadius}` }}
           id={id}
           value={value}
@@ -57,10 +56,9 @@ export const CustomInput = (props: Partial<InputProps>) => {
           pattern={pattern}
           onChange={handleInputChange}
           checked={checked}
-        >
-        </input>
+        ></input>
       </div>
-      <p className={(isEmpty && isError) ? styles.input__error__description : styles.no__element}>{errorDescription}</p>
+      <p className={isEmpty && isError ? styles.input__error__description : styles.no__element}>{errorDescription}</p>
     </div>
   );
 };

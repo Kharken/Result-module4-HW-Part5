@@ -1,14 +1,9 @@
-import {ChildrenProps} from "../../../types/app-types";
-import {AuthContext} from "../auth-context/AuthContext";
-import {useSetContext} from "../../../hooks/useSetContext";
+import { ChildrenProps } from '../../../types/app-types';
+import { AuthContext } from '../auth-context/AuthContext';
+import { useSetContext } from '../../../hooks/useSetContext';
 
-export const AuthProvider = ({children}: ChildrenProps) => {
+export const AuthProvider = ({ children }: ChildrenProps) => {
+  const value = useSetContext();
 
-    const value = useSetContext();
-
-    return (
-        <AuthContext.Provider value={value}>
-            {children}
-        </AuthContext.Provider>
-    )
-}
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};

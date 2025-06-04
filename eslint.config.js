@@ -12,9 +12,16 @@ export default defineConfig([
   {
     ignores: ['.commitlint.config.js'],
   },
-  { files: ['**/*.{js,mjs,cjs,ts}'], plugins: { js }, extends: ['js/recommended'] },
+  {
+    files: ['**/*.{js,mjs,cjs,ts}'],
+    plugins: { js },
+    extends: ['js/recommended'],
+  },
   { files: ['**/*.js'], languageOptions: { sourceType: 'script' } },
-  { files: ['**/*.{js,mjs,cjs,ts}'], languageOptions: { globals: globals.browser } },
+  {
+    files: ['**/*.{js,mjs,cjs,ts}'],
+    languageOptions: { globals: globals.browser },
+  },
   tseslint.configs.recommended,
   globalIgnores(['**/dist', '**/node_modules/']),
 ]);

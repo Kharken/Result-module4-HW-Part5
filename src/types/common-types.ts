@@ -1,14 +1,13 @@
-
 export interface ApiRoutes {
-    [key: string]: string;
+  [key: string]: string;
 }
 
 export interface CommonProps {
-    isLoading: boolean;
-    error: unknown;
+  isLoading: boolean;
+  error: unknown;
 }
 
 export interface CommonData {
-    id: number;
-    name: string;
+  id: number;
+  name: string;
 }
