@@ -1,18 +1,18 @@
 import { Main } from '../pages/main/Main';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AppLayout } from '../components/layouts/app-layout/AppLayout';
-import { Character } from '../pages/character/Character';
 import './App.css';
 import { ROUTES } from '../routes/routes';
-import { Episode } from '../pages/episode/Episode';
 import { CharacterCard } from '../pages/character/components/character-card/CharacterCard';
 import { EpisodeCard } from '../pages/episode/components/episode-card/EpisodeCard';
-import { Location } from '../pages/location/Location';
 import { LocationCard } from '../pages/location/components/location-card/LocationCard';
-import { NotFound } from '../pages/not-found-page/NotFound';
 import { AuthProvider } from './context/auth-provider/AuthProvider';
-import { Login } from '../pages/login/Login';
 import { PrivateRoute } from '../components/private-route/PrivateRoute';
+import { LazyCharacter } from '../pages/character';
+import { LazyEpisode } from '../pages/episode';
+import { LazyLocation } from '../pages/location';
+import { LazyNotFound } from '../pages/not-found';
+import { LazyLogin } from '../pages/login';
 
 export const App = () => {
   return (
@@ -25,7 +25,7 @@ export const App = () => {
               path={ROUTES.Characters}
               element={
                 <PrivateRoute>
-                  <Character />
+                  <LazyCharacter/>
                 </PrivateRoute>
               }
             />
@@ -41,7 +41,7 @@ export const App = () => {
               path={ROUTES.Episodes}
               element={
                 <PrivateRoute>
-                  <Episode />
+                  <LazyEpisode/>
                 </PrivateRoute>
               }
             />
@@ -57,7 +57,7 @@ export const App = () => {
               path={ROUTES.Locations}
               element={
                 <PrivateRoute>
-                  <Location />
+                  <LazyLocation/>
                 </PrivateRoute>
               }
             />
@@ -70,8 +70,8 @@ export const App = () => {
               }
             />
           </Route>
-          <Route path={ROUTES.NotFound} element={<NotFound />} />
-          <Route path={ROUTES.Login} element={<Login />} />
+          <Route path={ROUTES.NotFound} element={<LazyNotFound />} />
+          <Route path={ROUTES.Login} element={<LazyLogin />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
