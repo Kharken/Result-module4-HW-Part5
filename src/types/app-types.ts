@@ -18,3 +18,8 @@ export interface Value {
   signIn: SignIn;
   signOut: SignOut;
 }
+
+export interface SuspenseProviderProps {
+  children: ReactNode;
+  fallback?: ReactNode;
+}

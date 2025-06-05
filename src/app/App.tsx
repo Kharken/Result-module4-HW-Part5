@@ -13,11 +13,13 @@ import { LazyEpisode } from '../pages/episode';
 import { LazyLocation } from '../pages/location';
 import { LazyNotFound } from '../pages/not-found';
 import { LazyLogin } from '../pages/login';
+import { SuspenseProvider } from '../components/suspense-provider/SuspenseProvider';
 
 export const App = () => {
   return (
     <AuthProvider>
       <BrowserRouter>
+        <SuspenseProvider fallback={<h1>Loading...</h1>}>
         <Routes>
           <Route path={ROUTES.Index} element={<AppLayout />}>
             <Route index element={<Main />} />
@@ -25,7 +27,7 @@ export const App = () => {
               path={ROUTES.Characters}
               element={
                 <PrivateRoute>
-                  <LazyCharacter/>
+                  <LazyCharacter />
                 </PrivateRoute>
               }
             />
@@ -41,7 +43,7 @@ export const App = () => {
               path={ROUTES.Episodes}
               element={
                 <PrivateRoute>
-                  <LazyEpisode/>
+                  <LazyEpisode />
                 </PrivateRoute>
               }
             />
@@ -57,7 +59,7 @@ export const App = () => {
               path={ROUTES.Locations}
               element={
                 <PrivateRoute>
-                  <LazyLocation/>
+                  <LazyLocation />
                 </PrivateRoute>
               }
             />
@@ -73,6 +75,7 @@ export const App = () => {
           <Route path={ROUTES.NotFound} element={<LazyNotFound />} />
           <Route path={ROUTES.Login} element={<LazyLogin />} />
         </Routes>
+        </SuspenseProvider>
       </BrowserRouter>
     </AuthProvider>
   );
